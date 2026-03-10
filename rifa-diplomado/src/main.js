@@ -90,7 +90,7 @@ btnConfirmar.addEventListener('click', async () => {
   const miNumeroWhatsApp = '573208095858'; 
   
   // Mensaje predeterminado que te llegará
-  const mensaje = `Hola Alejandro, acabo de separar el número ${numeroActual} para la "Gran Rifa". Mi nombre es ${nombre}. ¿Me compartes tu Nequi para transferirte?`;
+  const mensaje = `Hola Alejandro, acabo de separar el número ${numeroActual} para la "Gran Rifa". Mi nombre es ${nombre}.`;
   
   // Codificamos el mensaje para que la URL lo entienda (respete los espacios)
   const urlWhatsApp = `https://wa.me/${miNumeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
