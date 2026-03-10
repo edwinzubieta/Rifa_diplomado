@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* =============================================
+   VARIABLES
+   ============================================= */
+:root {
+  --verde: #40c096;
+  --verde-dk: #319875;
+  --amarillo: #dcaa3a;
+  --rojo: #d9687e;
+  --rojo-dk: #b64c62;
+  --bg-dark: #121c26;
+  --bg-card: #1a2634;
+  --bg-card2: #213041;
+  --text: #e2e8f0;
+  --muted: #889fb4;
+  --shadow-glow-green: 0 0 15px rgba(64, 192, 150, 0.25);
+  --shadow-glow-red: 0 0 15px rgba(217, 104, 126, 0.25);
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px 15px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* =============================================
+   FONDO ANIMADO — CÍRCULOS FLOTANTES
+   ============================================= */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(0, 214, 143, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(255, 77, 109, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 55% 40%, rgba(255, 204, 0, 0.07) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Partículas decorativas usando pseudo-elementos en .app-container */
+.app-container {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-card2) 100%);
+  padding: 32px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 0 0 1px rgba(0, 214, 143, 0.08),
+    0 24px 60px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(0, 214, 143, 0.05);
+}
+
+/* Sparkle decorativo en esquinas */
+.app-container::before,
+.app-container::after {
+  content: '✦';
+  position: absolute;
+  font-size: 1.4rem;
+  color: var(--amarillo);
+  opacity: 0.5;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.app-container::before {
+  top: 16px;
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.app-container::after {
+  top: 16px;
+  right: 20px;
+  animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.3) rotate(20deg);
+  }
+}
+
+/* =============================================
+   CONFETTI DOTS — posicionados con JS o estáticos
+   (animación CSS pura con variables)
+   ============================================= */
+.confetti-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatUp var(--dur, 8s) var(--delay, 0s) infinite ease-in;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: var(--op, 0.6);
+  }
+
+  90% {
+    opacity: var(--op, 0.6);
+  }
+
+  100% {
+    transform: translateY(-10vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero-section {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--verde), var(--amarillo));
+  color: #0d1b2a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.hero-content h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #ffffff 30%, var(--amarillo) 70%, var(--verde) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  text-shadow: none;
+  filter: drop-shadow(0 0 30px rgba(255, 204, 0, 0.25));
+}
+
+.precio {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--verde);
+  text-shadow: var(--shadow-glow-green);
+  margin-bottom: 6px;
+}
+
+.fecha-sorteo {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* =============================================
+   LEYENDA
+   ============================================= */
+.leyenda {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.color-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   GRID DE NÚMEROS
+   ============================================= */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  gap: 9px;
+}
+
+.numero-box {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.18s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.18s ease;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brillo interno (shine) */
+.numero-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-15deg);
+  transition: left 0.4s ease;
+}
+
+.numero-box.disponible:hover::before {
+  left: 130%;
+}
+
+/* Estados */
+.disponible {
+  background: linear-gradient(135deg, #00d68f, #00b378);
+  box-shadow: 0 3px 10px rgba(0, 214, 143, 0.30);
+}
+
+.reservado {
+  background: linear-gradient(135deg, #ffcc00, #e6a800);
+  box-shadow: 0 3px 10px rgba(255, 204, 0, 0.25);
+  cursor: not-allowed;
+  opacity: 0.88;
+}
+
+.pagado {
+  background: linear-gradient(135deg, #ff4d6d, #c9184a);
+  box-shadow: 0 3px 10px rgba(255, 77, 109, 0.25);
+  cursor: not-allowed;
+  opacity: 0.80;
+}
+
+/* Hover (solo mouse) */
+@media (hover: hover) {
+  .numero-box.disponible:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: var(--shadow-glow-green);
+    z-index: 2;
+  }
+}
+
+/* Tap en móvil */
+.numero-box:active {
+  transform: scale(0.9);
+}
+
+/* =============================================
+   MODAL
+   ============================================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 18, 0.80);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal.oculto {
+  display: none;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #1e2d42, #162032);
+  border: 1px solid rgba(0, 214, 143, 0.20);
+  padding: 28px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow:
+    0 0 0 1px rgba(0, 214, 143, 0.08),
+    0 25px 50px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(0, 214, 143, 0.08);
+  animation: slideUp 0.3s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px) scale(0.97);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.highlight {
+  color: var(--verde);
+  font-size: 1.6rem;
+  text-shadow: var(--shadow-glow-green);
+}
+
+.btn-cerrar {
+  background: rgba(255, 255, 255, 0.07);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.btn-cerrar:hover {
+  background: rgba(255, 77, 109, 0.25);
+  color: var(--rojo);
+}
+
+.modal-content p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+/* Form */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 0.98rem;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+  color: rgba(127, 168, 201, 0.5);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(0, 214, 143, 0.15);
+}
+
+/* Botón principal */
+.btn-primario {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--verde), var(--verde-dk));
+  color: #0d1b2a;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 18px rgba(0, 214, 143, 0.35);
+}
+
+.btn-primario:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 214, 143, 0.50);
+}
+
+.btn-primario:active {
+  transform: scale(0.97);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 400px) {
+  .app-container {
+    padding: 22px 14px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+    gap: 7px;
+  }
+
+  .numero-box {
+    font-size: 0.9rem;
+    border-radius: 9px;
+  }
+}

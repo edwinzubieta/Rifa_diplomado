@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rifa Pro Fondo Diplomado | Edwin</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="hero-section">
+      <div class="hero-content">
+        <span>🎉 Gran Rifa 🎉</span>
+        <h1>Buchanas 18 años</h1>
+        <p class="precio">Valor: <strong>$20.000 COP</strong></p>
+        <p class="fecha-sorteo">📅 Sorteo: "por definir"</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="leyenda">
+        <div class="leyenda-item"><span class="color-box disponible"></span> Disponible</div>
+        <div class="leyenda-item"><span class="color-box reservado"></span> Reservado</div>
+        <div class="leyenda-item"><span class="color-box pagado"></span> Pagado</div>
+      </div>
+
+      <div id="grid-numeros" class="grid-container"></div>
+    </main>
+  </div>
+
+  <div id="modal-reserva" class="modal oculto">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Número <span id="numero-seleccionado" class="highlight"></span></h2>
+        <button id="cerrar-modal" class="btn-cerrar">&times;</button>
+      </div>
+      <p>Ingresa tus datos para apartarlo y coordinar el pago por WhatsApp.</p>
+
+      <div class="form-group">
+        <label for="nombre-comprador">Tu Nombre</label>
+        <input type="text" id="nombre-comprador" placeholder="Ej: Juan Pérez" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono-comprador">Tu WhatsApp (Opcional)</label>
+        <input type="tel" id="telefono-comprador" placeholder="Ej: 3001234567">
+      </div>
+
+      <button id="btn-confirmar" class="btn-primario">
+        Separar y Pagar 📲
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
