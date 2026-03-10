@@ -86,7 +86,7 @@ btnConfirmar.addEventListener('click', async () => {
 
   // --- NUEVO: Redirección automática a WhatsApp ---
   // Reemplaza este número con el tuyo. Deja el 57 que es el indicativo de Colombia.
-  const miNumeroWhatsApp = '573000000000'; 
+  const miNumeroWhatsApp = '573208095858'; 
   
   // Mensaje predeterminado que te llegará
   const mensaje = `Hola Edwin, acabo de separar el número ${numeroActual} para la rifa de tu diplomado. Mi nombre es ${nombre}. ¿Me compartes tu Nequi o Daviplata para transferirte?`;
