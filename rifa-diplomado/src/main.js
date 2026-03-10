@@ -76,10 +76,6 @@ btnConfirmar.addEventListener('click', async () => {
     return;
   }
 
-  if (telefono === '') {
-    alert('Por favor, ingresa tu WhatsApp');
-    return;
-  }
 
   // Actualizamos el estado en Firebase
   const numeroDocRef = doc(db, "numeros", numeroActual);

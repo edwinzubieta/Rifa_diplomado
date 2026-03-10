@@ -40,7 +40,7 @@ body {
   position: relative;
 }
 
-/* =============================================
+/* ================================== ===========
    FONDO ANIMADO — CÍRCULOS FLOTANTES
    ============================================= */
 body::before {
@@ -168,6 +168,67 @@ body::before {
   padding: 4px 14px;
   border-radius: 20px;
   margin-bottom: 12px;
+}
+
+/* --- Estilos para Métodos de Pago --- */
+.metodos-pago {
+  margin: 25px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03); /* Fondo muy sutil */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 350px;
+}
+
+.metodos-titulo {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.metodos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.metodo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Colores específicos de cada marca */
+.metodo-card.nequi {
+  background-color: rgba(103, 58, 183, 0.1); 
+  border: 1px solid rgba(103, 58, 183, 0.3);
+  color: #c4a5ff; /* Texto morado claro */
+}
+
+.metodo-card.daviplata {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5; /* Texto rojo claro */
+}
+
+.metodo-card.llave {
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7; /* Texto verde claro */
+}
+
+.metodo-numero {
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  font-family: monospace; /* Hace que los números se vean más alineados y técnicos */
+  font-size: 1.05rem;
 }
 
 .hero-content h1 {
